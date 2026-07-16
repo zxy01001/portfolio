@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="朱星宇作品集｜智能抄单助手项目案例">
+  <link rel="icon" href="data:,">
+  <title>智能抄单助手｜朱星宇作品集</title>
+  <script>document.documentElement.classList.add('js')</script>
+  <style>
+    :root {
+      --navy:#111a2e; --navy-2:#1d2943; --blue:#4263eb; --blue-2:#3451ce;
+      --cyan:#2fc5c9; --ink:#182033; --text:#344054; --muted:#667085;
+      --line:#e4e7ec; --paper:#fffdf9; --canvas:#eef1f6; --white:#fff;
+      --soft-blue:#eef2ff; --soft-cyan:#eafafa; --soft-sand:#f4efe6;
+      --orange:#ff8a00; --radius:22px; --shadow:0 20px 60px rgba(17,26,46,.12);
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;color:var(--text);background:
+      radial-gradient(circle at 8% 4%,rgba(66,99,235,.11),transparent 27rem),
+      radial-gradient(circle at 92% 16%,rgba(47,197,201,.10),transparent 30rem),
+      var(--canvas);font-family:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    body::before{content:"";position:fixed;z-index:-1;inset:0;opacity:.32;background-image:linear-gradient(rgba(17,26,46,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,26,46,.035) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(#000,transparent 85%);pointer-events:none}
+    ::selection{color:#fff;background:var(--blue)}
+    a{color:inherit;text-decoration:none} button{font:inherit}
+    img{display:block;max-width:100%}
+    .toolbar{position:sticky;z-index:50;top:0;display:flex;align-items:center;min-height:66px;padding:10px max(22px,calc((100vw - var(--max))/2));color:#fff;background:rgba(17,26,46,.92);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px)}
+    .brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:650;letter-spacing:.04em}.brand-dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(47,197,201,.14)}
+    .top-nav{display:flex;gap:4px;margin-left:auto;padding:4px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.07);border-radius:11px}.top-nav a{padding:6px 11px;color:#aeb9cf;border-radius:8px;font-size:11px;transition:.2s}.top-nav a:hover,.top-nav a.is-active{color:#fff;background:rgba(255,255,255,.09)}
+    .back{display:inline-flex;align-items:center;gap:7px;margin-left:16px;padding:8px 12px;color:#fff;background:var(--blue);border-radius:10px;font-size:12px;font-weight:700;transition:.2s}.back:hover{transform:translateY(-1px);background:var(--blue-2)}
+    .wrap{width:min(calc(100% - 34px),var(--max));margin:32px auto 70px}
+    .case{overflow:hidden;background:var(--paper);border:1px solid rgba(17,24,39,.06);border-radius:10px;box-shadow:var(--shadow)}
+    .hero{position:relative;overflow:hidden;min-height:650px;padding:72px 68px;color:#fff;background:radial-gradient(circle at 78% 30%,rgba(66,99,235,.42),transparent 28%),linear-gradient(135deg,#111a2e 0%,#17243d 58%,#10192d 100%);isolation:isolate}
+    .hero::before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-160px;border:1px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.018)}
+    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);align-items:center;gap:60px}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:26px;color:#aeb9cf;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.eyebrow::before{content:"";width:34px;height:2px;background:var(--cyan)}
+    h1{max-width:700px;margin:0;color:#fff;font-size:clamp(46px,6vw,78px);line-height:1.04;letter-spacing:-.045em}.hero-lead{max-width:680px;margin:26px 0 32px;color:#c6d0e4;font-size:18px;line-height:1.85}.hero-tags{display:flex;flex-wrap:wrap;gap:9px}.hero-tag{padding:7px 11px;color:#d9e1f0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);border-radius:999px;font-size:11px}
+    .phone-hero{position:relative;width:294px;margin:auto;padding:10px;background:#0c1322;border:1px solid rgba(255,255,255,.17);border-radius:42px;box-shadow:0 32px 80px rgba(0,0,0,.36);transform:rotate(3deg)}.phone-hero::before{content:"";position:absolute;z-index:2;top:17px;left:50%;width:72px;height:18px;background:#0c1322;border-radius:99px;transform:translateX(-50%)}.phone-hero img{width:100%;border-radius:33px}.hero-orbit{position:absolute;right:-46px;bottom:88px;padding:12px 16px;color:var(--ink);background:rgba(255,255,255,.94);border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.18);font-size:12px;font-weight:700;transform:rotate(-3deg)}.hero-orbit span{display:block;color:var(--blue);font-size:22px;line-height:1.2}
+    .hero-meta{position:absolute;z-index:3;right:68px;bottom:38px;left:68px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.12)}.meta-item{padding:20px 22px 0 0}.meta-label{display:block;margin-bottom:4px;color:#8fa0bd;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.meta-value{color:#fff;font-size:13px;font-weight:650}
+    .content{padding:0 68px 76px}.section{padding:86px 0;border-bottom:1px solid var(--line)}.section:last-child{border:0}.section-head{display:grid;grid-template-columns:210px minmax(0,1fr);gap:46px;margin-bottom:42px}.section-kicker{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.section-title{margin:0;color:var(--ink);font-size:clamp(30px,4vw,44px);line-height:1.22;letter-spacing:-.035em}.section-intro{max-width:760px;margin:16px 0 0;color:var(--muted);font-size:15px}
+    .overview-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:18px}.story-card{padding:30px;background:#fff;border:1px solid var(--line);border-radius:20px}.story-card--dark{color:#d6deed;background:var(--navy);border-color:var(--navy)}.story-card h3{margin:0 0 12px;color:var(--ink);font-size:18px}.story-card--dark h3{color:#fff}.story-card p{margin:0}.problem-list{display:grid;gap:12px;margin-top:20px}.problem{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;padding:15px;background:#f8f9fc;border-radius:14px}.problem b{display:grid;place-items:center;width:30px;height:30px;color:var(--blue);background:var(--soft-blue);border-radius:10px;font-size:11px}.problem strong{display:block;margin-bottom:2px;color:var(--ink);font-size:13px}.problem span{color:var(--muted);font-size:12px}.strategy-list{display:grid;gap:18px;margin-top:20px}.strategy{padding-left:18px;border-left:2px solid var(--cyan)}.strategy strong{display:block;color:#fff;font-size:14px}.strategy span{color:#9fadc4;font-size:12px}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.principle{position:relative;overflow:hidden;min-height:190px;padding:26px;background:linear-gradient(145deg,#fff,#f7f8fb);border:1px solid var(--line);border-radius:20px}.principle-num{margin-bottom:28px;color:var(--blue);font-size:11px;font-weight:800}.principle h3{margin:0 0 8px;color:var(--ink);font-size:17px}.principle p{margin:0;color:var(--muted);font-size:12px}.principle::after{content:"";position:absolute;right:-34px;bottom:-38px;width:100px;height:100px;border:18px solid var(--soft-blue);border-radius:50%}
+    .demo-shell{overflow:hidden;background:linear-gradient(145deg,#101a2e,#182642);border-radius:28px;box-shadow:0 28px 70px rgba(17,26,46,.2)}.demo-top{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}.demo-title{font-size:13px;font-weight:750}.demo-hint{color:#93a2bc;font-size:11px}.demo-grid{display:grid;grid-template-columns:280px minmax(310px,1fr) 300px;align-items:center;gap:28px;min-height:690px;padding:34px}
+    .flow-list{display:grid;gap:7px}.flow-step{display:grid;grid-template-columns:30px 1fr;gap:11px;width:100%;padding:12px;color:#9ba9c0;text-align:left;background:transparent;border:1px solid transparent;border-radius:14px;cursor:pointer;transition:.22s}.flow-step:hover{color:#fff;background:rgba(255,255,255,.05)}.flow-step.is-active{color:#fff;background:rgba(66,99,235,.18);border-color:rgba(104,130,245,.38)}.flow-index{display:grid;place-items:center;width:28px;height:28px;background:rgba(255,255,255,.07);border-radius:9px;font-size:10px;font-weight:800}.flow-step.is-active .flow-index{background:var(--blue)}.flow-name{display:block;font-size:12px;font-weight:700}.flow-desc{display:block;color:#71819c;font-size:10px}.device{position:relative;width:min(100%,310px);margin:auto;padding:9px;background:#070b13;border:1px solid rgba(255,255,255,.16);border-radius:43px;box-shadow:0 28px 70px rgba(0,0,0,.38)}.device::before{content:"";position:absolute;z-index:2;top:16px;left:50%;width:72px;height:18px;background:#070b13;border-radius:99px;transform:translateX(-50%)}.device-screen{position:relative;overflow:hidden;aspect-ratio:750/1624;border-radius:35px;background:#f3f5f8}.device-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translateY(7px) scale(.995);transition:opacity .32s ease,transform .42s ease}.device-screen img.is-active{opacity:1;transform:none}.demo-copy{color:#c7d0df}.step-label{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.demo-copy h3{margin:10px 0 12px;color:#fff;font-size:26px;line-height:1.28}.demo-copy p{min-height:84px;margin:0 0 22px;color:#9ba9c0;font-size:13px}.design-note{padding:16px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.07);border-radius:14px}.design-note strong{display:block;margin-bottom:4px;color:#fff;font-size:11px}.design-note span{color:#8797b1;font-size:11px}.demo-actions{display:flex;gap:9px;margin-top:20px}.demo-button{padding:9px 13px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;cursor:pointer}.demo-button:hover{background:rgba(255,255,255,.13)}.demo-button.primary{background:var(--blue);border-color:var(--blue)}
+    .branches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.branch{appearance:none;overflow:hidden;width:100%;padding:0;color:inherit;text-align:left;background:#fff;border:1px solid var(--line);border-radius:20px;cursor:zoom-in;transition:.25s}.branch:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(17,26,46,.09)}.branch-visual{overflow:hidden;height:310px;padding:22px;background:linear-gradient(145deg,#eef2ff,#f8f9fc)}.branch-visual img{width:152px;margin:auto;border:5px solid #111827;border-radius:24px;box-shadow:0 16px 36px rgba(17,26,46,.18)}.branch-copy{padding:22px}.branch-tag{color:var(--blue);font-size:10px;font-weight:800;letter-spacing:.08em}.branch h3{margin:7px 0;color:var(--ink);font-size:16px}.branch p{margin:0;color:var(--muted);font-size:12px}
+    .detail-showcase{display:grid;grid-template-columns:1fr 1fr;gap:18px}.detail-card{position:relative;overflow:hidden;min-height:520px;padding:34px;background:#f7f8fb;border:1px solid var(--line);border-radius:22px}.detail-card--wide{grid-column:1/-1;min-height:480px;background:var(--navy)}.detail-copy{position:relative;z-index:2;max-width:430px}.detail-copy h3{margin:0 0 8px;color:var(--ink);font-size:20px}.detail-card--wide h3{color:#fff}.detail-copy p{margin:0;color:var(--muted);font-size:13px}.detail-card--wide p{color:#95a3bb}.detail-phone{appearance:none;position:absolute;right:28px;bottom:-70px;width:245px;padding:7px;background:#111827;border:0;border-radius:34px;box-shadow:0 22px 55px rgba(17,26,46,.2);cursor:zoom-in;transform:rotate(3deg)}.detail-phone img{border-radius:28px}.detail-card:nth-child(2) .detail-phone{right:34px;transform:rotate(-3deg)}.detail-card--wide .detail-phone{right:80px;bottom:-240px;width:320px}.detail-accent{display:inline-flex;margin-bottom:20px;padding:6px 10px;color:var(--blue);background:var(--soft-blue);border-radius:99px;font-size:10px;font-weight:800}.detail-card--wide .detail-accent{color:#a9b9ff;background:rgba(66,99,235,.18)}
+    .results{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.result{padding:28px;background:#fff;border:1px solid var(--line);border-radius:18px}.result-value{display:block;margin-bottom:10px;color:var(--blue);font-size:32px;font-weight:800;line-height:1}.result-label{color:var(--ink);font-size:13px;font-weight:750}.result p{margin:8px 0 0;color:var(--muted);font-size:11px}.reflection{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px}.reflection-card{padding:30px;background:var(--soft-sand);border-radius:20px}.reflection-card:last-child{color:#fff;background:var(--navy)}.reflection-card h3{margin:0 0 10px;color:var(--ink);font-size:17px}.reflection-card:last-child h3{color:#fff}.reflection-card p{margin:0;font-size:13px}.reflection-card:last-child p{color:#9eabc0}
+    .next-case{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:36px 40px;color:#fff;background:linear-gradient(120deg,var(--blue),#2946c7);border-radius:22px}.next-case small{display:block;color:#cbd4ff;font-size:10px;letter-spacing:.1em}.next-case h2{margin:5px 0 0;font-size:25px}.next-arrow{display:grid;place-items:center;width:50px;height:50px;background:rgba(255,255,255,.13);border-radius:50%;font-size:24px}
+    .footer{display:flex;justify-content:space-between;padding:28px 0 0;color:var(--muted);font-size:11px}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}.reveal.is-visible{opacity:1;transform:none}
+    .lightbox{position:fixed;z-index:100;inset:0;display:none;place-items:center;padding:28px;background:rgba(7,11,19,.86);backdrop-filter:blur(10px)}.lightbox.is-open{display:grid}.lightbox img{max-width:min(92vw,520px);max-height:90vh;border-radius:24px;box-shadow:0 28px 100px rgba(0,0,0,.5)}.lightbox-close{position:absolute;top:22px;right:24px;width:44px;height:44px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:50%;cursor:pointer}
+    @media(max-width:980px){.hero{padding:56px 42px;min-height:690px}.hero-grid{grid-template-columns:1fr .7fr;gap:30px}.hero-meta{right:42px;left:42px}.content{padding:0 42px 62px}.demo-grid{grid-template-columns:220px 1fr}.demo-copy{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px}.demo-copy p{min-height:0}.branches{grid-template-columns:1fr 1fr}.branch:last-child{grid-column:1/-1}.top-nav{display:none}}
+    @media(max-width:720px){.toolbar{padding:10px 16px}.brand{font-size:11px}.back{margin-left:auto}.wrap{width:min(calc(100% - 20px),var(--max));margin:12px auto 36px}.case{border-radius:8px}.hero{min-height:auto;padding:52px 24px 180px}.hero-grid{grid-template-columns:1fr}.hero-lead{font-size:15px}.phone-hero{width:240px;margin-top:16px}.hero-orbit{right:-18px}.hero-meta{right:24px;bottom:25px;left:24px;grid-template-columns:1fr 1fr;gap:12px}.meta-item{padding:12px 0 0}.content{padding:0 22px 48px}.section{padding:62px 0}.section-head{grid-template-columns:1fr;gap:9px;margin-bottom:28px}.overview-grid,.principles,.branches,.detail-showcase,.results,.reflection{grid-template-columns:1fr}.demo-grid{grid-template-columns:1fr;padding:20px;gap:22px}.flow-list{display:flex;overflow:auto;padding-bottom:4px}.flow-step{flex:0 0 152px}.device{width:270px}.demo-copy{grid-column:auto;display:block}.detail-card--wide{grid-column:auto}.detail-card{min-height:520px;padding:26px}.detail-phone,.detail-card:nth-child(2) .detail-phone,.detail-card--wide .detail-phone{right:50%;bottom:-100px;width:230px;transform:translateX(50%)}.branch:last-child{grid-column:auto}.next-case{padding:28px}.next-case h2{font-size:19px}.footer{flex-direction:column;gap:5px}h1{font-size:46px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header class="toolbar">
+    <a class="brand" href="index.html"><span class="brand-dot"></span><span>ZXY · PRODUCT EXPERIENCE</span></a>
+    <nav class="top-nav" aria-label="案例章节">
+      <a href="#overview">项目概览</a><a href="#strategy">设计策略</a><a href="#prototype">交互流程</a><a href="#details">方案细节</a><a href="#outcome">项目成果</a>
+    </nav>
+    <a class="back" href="index.html#projects"><span>←</span> 返回作品集</a>
+  </header>
+
+  <main class="wrap">
+    <article class="case">
+      <header class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">AI ASSISTANT · MOBILE UX</div>
+            <h1>智能抄单助手</h1>
+            <p class="hero-lead">把自然语言中的复杂订货需求，转化为可核对、可修正、可继续下单的结构化商品清单。</p>
+            <div class="hero-tags"><span class="hero-tag">语音交互</span><span class="hero-tag">智能匹配</span><span class="hero-tag">异常容错</span><span class="hero-tag">业务效率</span></div>
+          </div>
+          <div class="phone-hero">
+            <img src="assets/images/voice-order/订单页面-初次进入.png" alt="智能抄单助手在订单页面中的入口设计">
+            <div class="hero-orbit"><span>7 步</span>完整下单闭环</div>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-item"><span class="meta-label">项目周期</span><span class="meta-value">2025.07 — 2025.08</span></div>
+          <div class="meta-item"><span class="meta-label">项目角色</span><span class="meta-value">项目负责人</span></div>
+          <div class="meta-item"><span class="meta-label">负责范围</span><span class="meta-value">交互 / UI / 协同落地</span></div>
+          <div class="meta-item"><span class="meta-label">上线状态</span><span class="meta-value">已上线并持续迭代</span></div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="section reveal" id="overview">
+          <div class="section-head"><div class="section-kicker">01 / OVERVIEW</div><div><h2 class="section-title">让“说清楚需求”代替“逐个搜索商品”</h2><p class="section-intro">传统下单依赖逐一搜索、选择规格和填写数量。当一次需求包含多个商品、规格和包装单位时，操作成本与出错概率同步增加。本项目尝试让用户用更自然的语音或文本表达需求，再由系统完成拆解与匹配。</p></div></div>
+          <div class="overview-grid">
+            <div class="story-card">
+              <h3>核心体验问题</h3>
+              <div class="problem-list">
+                <div class="problem"><b>01</b><div><strong>重复搜索，路径冗长</strong><span>多商品订单需要反复搜索、选规格、加数量，任务被切割成大量小操作。</span></div></div>
+                <div class="problem"><b>02</b><div><strong>自然表达与商品数据不一致</strong><span>用户说的是俗称、口语与包装描述，系统需要映射到标准商品与规格。</span></div></div>
+                <div class="problem"><b>03</b><div><strong>识别结果必须可控</strong><span>AI 不能直接替用户做最终决策，需要提供清晰核对、修改与撤销机制。</span></div></div>
+              </div>
+            </div>
+            <div class="story-card story-card--dark">
+              <h3>设计目标</h3>
+              <p>不是单纯增加一个语音按钮，而是建立从表达、识别、匹配到确认的可信闭环。</p>
+              <div class="strategy-list">
+                <div class="strategy"><strong>更低的输入成本</strong><span>支持语音和粘贴两种自然语言输入方式。</span></div>
+                <div class="strategy"><strong>更透明的处理过程</strong><span>让录音、转写、关键词解析和商品匹配始终可感知。</span></div>
+                <div class="strategy"><strong>更安全的最终决策</strong><span>通过默认选择、相似商品和数量修改，把控制权交还给用户。</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="strategy">
+          <div class="section-head"><div class="section-kicker">02 / STRATEGY</div><div><h2 class="section-title">围绕“效率、信任、容错”建立设计原则</h2><p class="section-intro">AI 能缩短任务路径，但也会带来识别不确定性。方案通过过程可见、结果可核对、失败可恢复，平衡智能效率与业务准确性。</p></div></div>
+          <div class="principles">
+            <div class="principle"><div class="principle-num">PRINCIPLE 01</div><h3>入口贴近任务</h3><p>将语音下单放在订单页面的核心操作区域，并用一次性引导说明价值，不改变用户原有任务上下文。</p></div>
+            <div class="principle"><div class="principle-num">PRINCIPLE 02</div><h3>反馈贯穿全程</h3><p>录音状态、实时转写、解析加载和识别结果层层衔接，减少等待过程中的不确定感。</p></div>
+            <div class="principle"><div class="principle-num">PRINCIPLE 03</div><h3>错误可以恢复</h3><p>未命中需求、未命中商品和候选商品不足均提供明确下一步，不让用户陷入无出口的空状态。</p></div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="prototype">
+          <div class="section-head"><div class="section-kicker">03 / INTERACTIVE FLOW</div><div><h2 class="section-title">体验完整的语音下单流程</h2><p class="section-intro">点击左侧步骤或使用“上一步 / 下一步”，查看高保真界面与每一步的设计判断。这里展示的是实际方案流程，不是脱离业务的动效演示。</p></div></div>
+          <div class="demo-shell">
+            <div class="demo-top"><span class="demo-title">HIGH-FIDELITY PROTOTYPE</span><span class="demo-hint">点击步骤切换 · 支持键盘方向键</span></div>
+            <div class="demo-grid">
+              <div class="flow-list" role="tablist" aria-label="语音下单步骤">
+                <button class="flow-step is-active" data-step="0" role="tab" aria-selected="true"><span class="flow-index">01</span><span><span class="flow-name">发现入口</span><span class="flow-desc">任务内引导</span></span></button>
+                <button class="flow-step" data-step="1" role="tab"><span class="flow-index">02</span><span><span class="flow-name">唤起助手</span><span class="flow-desc">多模态输入</span></span></button>
+                <button class="flow-step" data-step="2" role="tab"><span class="flow-index">03</span><span><span class="flow-name">开始表达</span><span class="flow-desc">即时状态反馈</span></span></button>
+                <button class="flow-step" data-step="3" role="tab"><span class="flow-index">04</span><span><span class="flow-name">实时转写</span><span class="flow-desc">内容可见</span></span></button>
+                <button class="flow-step" data-step="4" role="tab"><span class="flow-index">05</span><span><span class="flow-name">智能解析</span><span class="flow-desc">降低等待焦虑</span></span></button>
+                <button class="flow-step" data-step="5" role="tab"><span class="flow-index">06</span><span><span class="flow-name">核对商品</span><span class="flow-desc">人工最终确认</span></span></button>
+                <button class="flow-step" data-step="6" role="tab"><span class="flow-index">07</span><span><span class="flow-name">完成下单</span><span class="flow-desc">回归订单任务</span></span></button>
+              </div>
+              <div class="device" aria-live="polite">
+                <div class="device-screen">
+                  <img class="is-active" src="assets/images/voice-order/订单页面-初次进入.png" alt="订单页面首次进入时展示语音助手引导">
+                  <img src="assets/images/voice-order/订单页面-语音下单助手.png" alt="语音下单助手输入面板">
+                  <img src="assets/images/voice-order/订单页面-语音下单助手-录音中.png" alt="语音助手录音状态">
+                  <img src="assets/images/voice-order/订单页面-语音下单助手-录音中-展示内容2.png" alt="录音过程实时展示转写内容">
+                  <img src="assets/images/voice-order/下单结果-loading-1.png" alt="智能解析关键词的加载状态">
+                  <img src="assets/images/voice-order/下单结果.png" alt="按关键词分组的商品识别结果">
+                  <img src="assets/images/voice-order/下单成功.png" alt="下单完成后的订单页面">
+                </div>
+              </div>
+              <div class="demo-copy">
+                <div><div class="step-label">STEP 01 · ENTRY</div><h3 id="step-title">在任务现场解释功能价值</h3><p id="step-copy">入口固定在订单页面底部，首次进入用简短气泡传达“减少搜索、快速下单”的直接价值，避免让新能力成为无法理解的悬浮按钮。</p></div>
+                <div><div class="design-note"><strong>设计判断</strong><span id="step-note">保留原有“添加商品”和“下单”路径，智能助手作为增效方式出现，降低新功能对既有习惯的干扰。</span></div><div class="demo-actions"><button class="demo-button" id="prev-step" type="button">← 上一步</button><button class="demo-button primary" id="next-step" type="button">下一步 →</button></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-labelledby="branch-title">
+          <div class="section-head"><div class="section-kicker">04 / EDGE CASES</div><div><h2 class="section-title" id="branch-title">不仅设计成功路径，也设计失败后的下一步</h2><p class="section-intro">真实业务中，自然语言不会始终准确命中商品。异常状态的目标不是只告诉用户“失败了”，而是帮助用户理解原因并快速恢复任务。</p></div></div>
+          <div class="branches">
+            <button class="branch lightbox-trigger" data-image="assets/images/voice-order/订单页面-语音下单助手-粘贴.png" type="button"><div class="branch-visual"><img src="assets/images/voice-order/订单页面-语音下单助手-粘贴.png" alt="粘贴输入设计"></div><div class="branch-copy"><span class="branch-tag">ALTERNATIVE INPUT</span><h3>粘贴作为语音的补充</h3><p>在嘈杂或不便说话的环境中，用户仍可粘贴已有订单文本，延续同一套解析流程。</p></div></button>
+            <button class="branch lightbox-trigger" data-image="assets/images/voice-order/空白页状态-未命中商品.png" type="button"><div class="branch-visual"><img src="assets/images/voice-order/空白页状态-未命中商品.png" alt="未命中商品状态"></div><div class="branch-copy"><span class="branch-tag">NO MATCH</span><h3>关键词存在但商品未命中</h3><p>按关键词保留结果结构，清楚指出缺失位置，并允许继续处理已识别内容。</p></div></button>
+            <button class="branch lightbox-trigger" data-image="assets/images/voice-order/空白页状态-未命中需求.png" type="button"><div class="branch-visual"><img src="assets/images/voice-order/空白页状态-未命中需求.png" alt="未识别到下单需求状态"></div><div class="branch-copy"><span class="branch-tag">INVALID INTENT</span><h3>未识别到有效需求</h3><p>明确反馈当前没有可确认商品，同时保留继续下单入口，避免流程中断后无路可走。</p></div></button>
+          </div>
+        </section>
+
+        <section class="section reveal" id="details">
+          <div class="section-head"><div class="section-kicker">05 / DESIGN DETAILS</div><div><h2 class="section-title">把 AI 的不确定性，转化为可理解的界面结构</h2><p class="section-intro">结果页面承担了“解释系统判断”和“支持用户修正”两项任务。信息按照需求原文、解析关键词、匹配商品和最终操作分层，帮助用户快速完成核对。</p></div></div>
+          <div class="detail-showcase">
+            <div class="detail-card"><div class="detail-copy"><span class="detail-accent">结构化反馈</span><h3>用关键词组织识别结果</h3><p>把一段自然语言拆成多个关键词分组，用户可以将系统结果与原始需求逐项对应，减少遗漏。</p></div><button class="detail-phone lightbox-trigger" data-image="assets/images/voice-order/下单结果-1.png" type="button"><img src="assets/images/voice-order/下单结果-1.png" alt="关键词分组展示"></button></div>
+            <div class="detail-card"><div class="detail-copy"><span class="detail-accent">渐进披露</span><h3>默认推荐，按需展开候选</h3><p>首屏优先展示最可能的商品，并将相似商品收起，既控制信息密度，也为识别偏差提供修正入口。</p></div><button class="detail-phone lightbox-trigger" data-image="assets/images/voice-order/下单结果-展开.png" type="button"><img src="assets/images/voice-order/下单结果-展开.png" alt="相似商品展开状态"></button></div>
+            <div class="detail-card detail-card--wide"><div class="detail-copy"><span class="detail-accent">用户控制权</span><h3>数量可改、商品可取消、结果可继续补充</h3><p>系统只提供推荐，不代替用户做最终决定。用户可以修改数量、取消单项或全部结果，也可以继续表达新的需求，形成可迭代的下单过程。</p></div><button class="detail-phone lightbox-trigger" data-image="assets/images/voice-order/下单-全取消.png" type="button"><img src="assets/images/voice-order/下单-全取消.png" alt="商品取消后的结果状态"></button></div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="outcome">
+          <div class="section-head"><div class="section-kicker">06 / OUTCOME</div><div><h2 class="section-title">从功能上线到持续验证</h2><p class="section-intro">项目完成从 0 到 1 设计并上线，通过真实使用反馈继续调整识别结果、商品推荐与操作路径。</p></div></div>
+          <div class="results">
+            <div class="result"><span class="result-value">10+</span><span class="result-label">日均活跃企业</span><p>功能上线后稳定运行，获得真实业务场景中的持续使用。</p></div>
+            <div class="result"><span class="result-value">80%+</span><span class="result-label">下单准确率</span><p>智能识别与人工确认结合，减少重复搜索和操作失误。</p></div>
+            <div class="result"><span class="result-value">0→1</span><span class="result-label">完整产品落地</span><p>覆盖需求梳理、交互设计、视觉方案、评审跟进与上线迭代。</p></div>
+          </div>
+          <div class="reflection">
+            <div class="reflection-card"><h3>设计复盘</h3><p>AI 场景的体验重点不只是“识别得更准”，还需要在识别不准时依然让用户看得懂、改得动、走得下去。过程反馈与用户控制权，是建立智能功能信任感的基础。</p></div>
+            <div class="reflection-card"><h3>后续迭代方向</h3><p>继续结合真实订单表达积累口语词、商品别名与包装规则，并优化候选商品排序和批量修正效率。</p></div>
+          </div>
+        </section>
+
+        <section class="section reveal">
+          <a class="next-case" href="index.html#projects"><div><small>BACK TO PORTFOLIO</small><h2>返回首页，查看其他项目</h2></div><span class="next-arrow">→</span></a>
+          <footer class="footer"><span>朱星宇 · UX 设计师 / 产品经理</span><span>案例内容与高保真界面均基于真实项目整理</span></footer>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="高保真大图预览">
+    <button class="lightbox-close" type="button" aria-label="关闭预览">✕</button><img src="" alt="高保真设计预览">
+  </div>
+
+  <script>
+    const flowData = [
+      {label:'STEP 01 · ENTRY',title:'在任务现场解释功能价值',copy:'入口固定在订单页面底部，首次进入用简短气泡传达“减少搜索、快速下单”的直接价值，避免让新能力成为无法理解的悬浮按钮。',note:'保留原有“添加商品”和“下单”路径，智能助手作为增效方式出现，降低新功能对既有习惯的干扰。'},
+      {label:'STEP 02 · INPUT',title:'用同一面板承载语音与文本',copy:'底部半屏面板保持订单上下文可见，核心麦克风建立明确视觉焦点，同时提供粘贴与发送作为辅助方式。',note:'半屏结构避免页面跳转；输入方式并列但层级有别，突出语音主路径，又不限制实际使用环境。'},
+      {label:'STEP 03 · RECORDING',title:'用明确状态确认“系统正在听”',copy:'录音按钮从麦克风切换为动态声纹状态，并用“录音中，点击结束”说明当前行为和下一步操作。',note:'状态变化同时依赖图形、颜色和文字，不只依赖动画，保证反馈明确且易于理解。'},
+      {label:'STEP 04 · TRANSCRIPT',title:'让表达内容实时可见、可检查',copy:'用户说出的商品、数量和包装信息实时显示在输入区，帮助用户及时发现漏说或表达错误。',note:'自然语言原文被完整保留，后续可以与系统拆解的关键词及商品结果建立清晰对应。'},
+      {label:'STEP 05 · PROCESSING',title:'把不可见的 AI 处理变成阶段反馈',copy:'进入结果页后先显示需求原文，再通过“正在提取关键词”的加载提示解释系统当前动作。',note:'骨架屏预告后续内容结构，既减少空白等待，也让用户提前理解结果将以分组商品呈现。'},
+      {label:'STEP 06 · REVIEW',title:'先给推荐，再让用户逐项确认',copy:'系统按照关键词组织商品，每组默认选中最可能结果，并支持修改数量、取消选择或展开相似商品。',note:'AI 负责缩小选择范围，最终决策仍由用户完成；底部按钮实时反馈已确认商品数量。'},
+      {label:'STEP 07 · COMPLETE',title:'确认后回到熟悉的订单流程',copy:'完成选择后，商品进入原有订单清单，用户继续使用已有的订单检查和下单流程，不额外制造新的结束页面。',note:'智能能力嵌入主流程而不是替代主流程，减少功能割裂，也降低研发与用户学习成本。'}
+    ];
+    const steps=[...document.querySelectorAll('.flow-step')], screens=[...document.querySelectorAll('.device-screen img')];
+    const title=document.querySelector('#step-title'), copy=document.querySelector('#step-copy'), note=document.querySelector('#step-note'), label=document.querySelector('.step-label');
+    let current=0;
+    function showStep(index,focus=false){current=(index+steps.length)%steps.length;steps.forEach((el,i)=>{el.classList.toggle('is-active',i===current);el.setAttribute('aria-selected',i===current);el.tabIndex=i===current?0:-1});screens.forEach((el,i)=>{el.classList.toggle('is-active',i===current);el.setAttribute('aria-hidden',i!==current)});const d=flowData[current];label.textContent=d.label;title.textContent=d.title;copy.textContent=d.copy;note.textContent=d.note;if(focus)steps[current].focus();}
+    steps.forEach((el,i)=>el.addEventListener('click',()=>showStep(i)));
+    showStep(0);
+    document.querySelector('#prev-step').addEventListener('click',()=>showStep(current-1));
+    document.querySelector('#next-step').addEventListener('click',()=>showStep(current+1));
+    document.addEventListener('keydown',e=>{if(document.querySelector('.lightbox').classList.contains('is-open'))return;if(e.key==='ArrowRight')showStep(current+1);if(e.key==='ArrowLeft')showStep(current-1)});
+
+    const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+    const navLinks=[...document.querySelectorAll('.top-nav a')];const navTargets=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);const navObserver=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;navLinks.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+visible.target.id))},{rootMargin:'-20% 0px -65% 0px',threshold:[0,.1,.5]});navTargets.forEach(el=>navObserver.observe(el));
+
+    const lightbox=document.querySelector('.lightbox'),lightboxImg=lightbox.querySelector('img'),closeLightbox=()=>{lightbox.classList.remove('is-open');document.body.style.overflow=''};
+    document.querySelectorAll('.lightbox-trigger').forEach(el=>el.addEventListener('click',()=>{lightboxImg.src=el.dataset.image;lightbox.classList.add('is-open');document.body.style.overflow='hidden'}));lightbox.querySelector('.lightbox-close').addEventListener('click',closeLightbox);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+  </script>
+</body>
+</html>
