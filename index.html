@@ -914,6 +914,53 @@
     }
 
 
+    /* Mobile layout normalization */
+    @media (max-width: 760px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; width: 100%; min-height: 58px; gap: 10px; padding: 8px 14px; }
+      .toolbar__brand { min-width: 0; }
+      .toolbar__brand strong { white-space: nowrap; }
+      .toolbar__actions { margin-left: 0; }
+      .button { width: 46px; min-height: 38px; padding: 0; font-size: 0; white-space: nowrap; }
+      .button::after { content: "导出"; font-size: 10px; }
+      .page { width: 100%; padding: 22px 16px 42px; }
+      .hero { gap: 0; padding: 27px 20px; border-radius: 20px; }
+      .eyebrow { font-size: 9px; letter-spacing: .1em; }
+      h1 { font-size: clamp(36px, 12vw, 44px); }
+      .role { font-size: 16px; }
+      .value-proposition { font-size: 14px; }
+      .summary { font-size: 11.5px; }
+      .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+      .chip { min-width: 0; justify-content: center; padding: 8px 7px; font-size: 9.5px; white-space: nowrap; }
+      .chip:first-child { grid-column: 1 / -1; }
+      .content-grid { gap: 24px; }
+      .page-header { align-items: flex-start; flex-direction: column; gap: 10px; margin-bottom: 18px; padding: 18px; border-radius: 15px; }
+      .page-header h2 { font-size: 21px; }
+      .page-header__mark { font-size: 8px; }
+      .project-filters { margin-top: -3px; margin-right: -16px; padding-right: 16px; }
+      .projects { gap: 12px; }
+      .project { gap: 13px; padding: 17px; border-radius: 16px; }
+      .project__index { gap: 10px; }
+      .project__number { flex: 0 0 auto; }
+      .project__type { font-size: 7.5px; }
+      .project__head { margin-bottom: 8px; }
+      .project__head h3 { font-size: 15px; line-height: 1.4; }
+      .project__meta { font-size: 8.5px; }
+      .project__background { padding: 9px 10px; font-size: 9.5px; }
+      .project__details { gap: 13px; }
+      .project__details h4 { font-size: 9.5px; }
+      .project-case-link { width: 100%; min-height: 40px; justify-content: center; font-size: 10px; }
+      .page-footer { right: auto; left: auto; gap: 12px; font-size: 8px; }
+    }
+
+    @media (max-width: 380px) {
+      .contacts { grid-template-columns: 1fr; }
+      .chip:first-child { grid-column: auto; }
+      .toolbar__brand strong { font-size: 12px; }
+      .button { padding-inline: 9px; font-size: 10px; }
+    }
+
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
@@ -925,7 +972,7 @@
     @media print {
       :root { --paper: #fffdf9; }
       body { margin: 0; background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .toolbar, .project-filters, .project-case-link { display: none !important; }
+      .toolbar, .project-filters, .project-case-link, .project--portfolio-only { display: none !important; }
       .js .reveal { opacity: 1 !important; transform: none !important; }
       .project { display: grid !important; transform: none !important; box-shadow: none !important; }
       .resume { display: block; width: auto; margin: 0; }
@@ -1149,6 +1196,7 @@
               <div><h4>优化行动</h4><ul class="bullet-list"><li>梳理个人设置和系统信息现状，以页面、组件和业务规则为维度建立问题清单与优化优先级。</li><li>统一组件、图标、品牌色与信息布局，优化长页面、长列表和操作按钮层级。</li><li>协同产品与研发补齐权限可见性、日期校验和异常状态反馈等业务边界。</li></ul></div>
               <div class="project__result"><h4>当前进展</h4><ul class="bullet-list"><li>已完成核心问题梳理与优化方向对齐。</li><li>正在分模块推进方案设计、评审与研发协同。</li><li>后续将结合上线反馈持续验证和迭代。</li></ul></div>
             </div>
+            <a class="project-case-link" href="profile-settings.html" aria-label="查看个人信息与系统设置优化完整项目案例">查看完整案例 <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -1210,6 +1258,19 @@
               <div><h4>关键行动</h4><ul class="bullet-list"><li>负责 Web 端场景、话术规则、评分维度等配置模块设计。</li><li>主导 App 端培训模块交互与 UI，保证陪练过程流畅、沉浸。</li><li>参与客户调研，将一线销售的真实痛点转化为产品功能。</li></ul></div>
               <div class="project__result"><h4>项目成果</h4><ul class="bullet-list"><li>调研阶段多家企业表达明确使用意愿。</li><li>初步验证市场需求和产品方向。</li><li>成为 AI 产品线的新业务拓展方向，具备规模化复制潜力。</li></ul></div>
             </div>
+          </div>
+        </article>
+
+        <article class="project project--portfolio-only" data-category="business">
+          <div class="project__index"><div class="project__number">07</div><div class="project__type">Data Dashboard</div></div>
+          <div>
+            <div class="project__head"><h3>经营概览优化设计</h3><span class="project__meta">核心设计 · 数据看板优化</span></div>
+            <p class="project__background">围绕管理者“看现状、找变化、做比较、查明细”的经营分析路径，重新组织关键指标、趋势图表、专项分析与排行数据，提升复杂数据的可读性和分析效率。</p>
+            <div class="project__details">
+              <div><h4>关键行动</h4><ul class="bullet-list"><li>重构经营看板的信息层级，建立从总览指标到专项分析的阅读顺序。</li><li>统一时间周期、分析对象、指标和员工等筛选控件及状态反馈。</li><li>覆盖指标联动、图表切换、排行比较、对象排除及移动端重排规则。</li></ul></div>
+              <div class="project__result"><h4>方案输出</h4><ul class="bullet-list"><li>完成经营概览核心页面与关键交互状态的高保真设计。</li><li>形成图表、排行、筛选和响应式布局的统一设计规则。</li><li>案例页已还原可操作原型，便于展示完整的设计逻辑。</li></ul></div>
+            </div>
+            <a class="project-case-link" href="business-overview.html" aria-label="查看经营概览优化设计完整项目案例">查看完整案例 <span aria-hidden="true">→</span></a>
           </div>
         </article>
       </section>
