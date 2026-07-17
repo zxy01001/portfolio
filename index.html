@@ -366,6 +366,14 @@
     .hero:hover .avatar::before { transform: rotate(-3deg); }
     .hero:hover .avatar::after { transform: rotate(4deg); }
 
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 22px;
+    }
+
     .avatar small {
       position: absolute;
       right: -9px;
@@ -925,6 +933,9 @@
       .button::after { content: "导出"; font-size: 10px; }
       .page { width: 100%; padding: 22px 16px 42px; }
       .hero { gap: 0; padding: 27px 20px; border-radius: 20px; }
+      .avatar { display: grid; order: -1; width: 88px; height: 88px; margin: 0 auto 22px; border-width: 3px; border-radius: 21px; }
+      .avatar img { border-radius: 17px; }
+      .avatar small { right: -8px; bottom: -7px; padding: 4px 6px; border-width: 2px; font-size: 7px; }
       .eyebrow { font-size: 9px; letter-spacing: .1em; }
       h1 { font-size: clamp(36px, 12vw, 44px); }
       .role { font-size: 16px; }
@@ -1070,7 +1081,7 @@
             <span class="chip">期望 7–10K</span>
           </div>
         </div>
-        <div class="avatar" aria-label="朱星宇姓名头像">朱<small>OPEN TO WORK</small></div>
+        <div class="avatar" aria-label="朱星宇个人头像"><img src="assets/images/profile/zxy-avatar.jpg" alt="朱星宇个人头像"><small>OPEN TO WORK</small></div>
       </section>
 
       <div class="content-grid reveal" id="experience">
