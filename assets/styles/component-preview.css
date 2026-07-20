@@ -1,0 +1,229 @@
+/*
+ * ZXY component preview layer
+ * Arco-inspired tokenized component language for the static portfolio.
+ * This file is only loaded by the preview copy and does not modify the original site.
+ */
+.component-preview {
+  --ds-primary: #526dff;
+  --ds-primary-hover: #3f5be8;
+  --ds-primary-soft: #eef2ff;
+  --ds-cyan: #2fc5c9;
+  --ds-text-1: #172033;
+  --ds-text-2: #475467;
+  --ds-text-3: #667085;
+  --ds-border: #e4e7ec;
+  --ds-border-strong: #cfd5e2;
+  --ds-surface: #ffffff;
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 22px;
+  --ds-shadow-sm: 0 2px 8px rgba(16, 24, 40, .06);
+  --ds-shadow-md: 0 12px 30px rgba(16, 24, 40, .10);
+  --ds-ease: cubic-bezier(.2,.8,.2,1);
+}
+
+.component-preview .toolbar {
+  background: rgba(20, 30, 52, .94);
+  border-bottom-color: rgba(255,255,255,.12);
+}
+
+.component-preview .toolbar__nav,
+.component-preview .button,
+.component-preview .filter-button,
+.component-preview .feature-btn,
+.component-preview .mode-tab,
+.component-preview .analysis-tab,
+.component-preview .chart-toggle,
+.component-preview .screen-btn,
+.component-preview .icon-button,
+.component-preview .demo-button,
+.component-preview .project-case-link {
+  border-radius: var(--ds-radius-md);
+  transition: color .2s var(--ds-ease), background .2s var(--ds-ease), border-color .2s var(--ds-ease), box-shadow .2s var(--ds-ease), transform .2s var(--ds-ease);
+}
+
+.component-preview .button,
+.component-preview .project-case-link,
+.component-preview .demo-button.primary,
+.component-preview .demo-button.is-primary {
+  background: var(--ds-primary);
+  border-color: var(--ds-primary);
+  box-shadow: 0 6px 16px rgba(82,109,255,.20);
+}
+
+.component-preview .button:hover,
+.component-preview .project-case-link:hover,
+.component-preview .demo-button.primary:hover,
+.component-preview .demo-button.is-primary:hover {
+  background: var(--ds-primary-hover);
+  border-color: var(--ds-primary-hover);
+  box-shadow: 0 9px 22px rgba(82,109,255,.28);
+  transform: translateY(-1px);
+}
+
+.component-preview .button:focus-visible,
+.component-preview .project-case-link:focus-visible,
+.component-preview .filter-button:focus-visible,
+.component-preview .feature-btn:focus-visible,
+.component-preview .mode-tab:focus-visible,
+.component-preview .analysis-tab:focus-visible,
+.component-preview .chart-toggle:focus-visible,
+.component-preview .screen-btn:focus-visible,
+.component-preview .icon-button:focus-visible,
+.component-preview .demo-button:focus-visible,
+.component-preview a:focus-visible {
+  outline: 3px solid rgba(82,109,255,.28);
+  outline-offset: 2px;
+}
+
+.component-preview .page {
+  border-radius: var(--ds-radius-sm);
+  box-shadow: 0 20px 60px rgba(16,24,40,.12);
+}
+
+.component-preview .hero,
+.component-preview .page-header,
+.component-preview .project,
+.component-preview .case,
+.component-preview .design-card,
+.component-preview .highlight,
+.component-preview .detail-card,
+.component-preview .principle,
+.component-preview .context-card,
+.component-preview .outcome-card,
+.component-preview .fact,
+.component-preview .kpi-card,
+.component-preview .education-card,
+.component-preview .skill-card,
+.component-preview .advantage,
+.component-preview .overview-card,
+.component-preview .problem,
+.component-preview .result,
+.component-preview .reflection-card {
+  border-radius: var(--ds-radius-lg);
+}
+
+.component-preview .project,
+.component-preview .case,
+.component-preview .design-card,
+.component-preview .highlight,
+.component-preview .detail-card,
+.component-preview .principle,
+.component-preview .context-card,
+.component-preview .outcome-card,
+.component-preview .fact,
+.component-preview .kpi-card,
+.component-preview .overview-card,
+.component-preview .problem,
+.component-preview .result,
+.component-preview .reflection-card {
+  border-color: var(--ds-border);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.component-preview .project:hover,
+.component-preview .case:hover,
+.component-preview .design-card:hover,
+.component-preview .highlight:hover,
+.component-preview .detail-card:hover,
+.component-preview .kpi-card:hover,
+.component-preview .overview-card:hover {
+  border-color: rgba(82,109,255,.36);
+  box-shadow: var(--ds-shadow-md);
+  transform: translateY(-2px);
+}
+
+.component-preview .tag,
+.component-preview .hero-tag,
+.component-preview .chip,
+.component-preview .case-badge,
+.component-preview .project-status,
+.component-preview .date-chip,
+.component-preview .feature-index,
+.component-preview .module-tags span,
+.component-preview .branch-tag,
+.component-preview .exclude-chip {
+  border-radius: 999px;
+}
+
+.component-preview .hero-tag,
+.component-preview .tag {
+  border: 1px solid rgba(82,109,255,.12);
+}
+
+.component-preview .chip {
+  border-color: rgba(255,255,255,.16);
+}
+
+.component-preview .section-title::before,
+.component-preview .page-header__mark::before {
+  border-radius: 999px;
+}
+
+.component-preview .section-title,
+.component-preview .page-header h2,
+.component-preview .project__head h3,
+.component-preview .case h2,
+.component-preview .detail-card h3,
+.component-preview .highlight h3 {
+  letter-spacing: -.015em;
+}
+
+.component-preview .project__number,
+.component-preview .feature-index,
+.component-preview .principle-num,
+.component-preview .module-num,
+.component-preview .fact-num {
+  box-shadow: 0 0 0 4px rgba(82,109,255,.08);
+}
+
+.component-preview .lightbox {
+  backdrop-filter: blur(10px);
+}
+
+.component-preview .lightbox-close {
+  border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+  .component-preview .page {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .component-preview .hero,
+  .component-preview .page-header {
+    border-radius: var(--ds-radius-xl);
+  }
+
+  .component-preview .project,
+  .component-preview .case,
+  .component-preview .design-card,
+  .component-preview .highlight,
+  .component-preview .detail-card,
+  .component-preview .principle,
+  .component-preview .context-card,
+  .component-preview .outcome-card,
+  .component-preview .fact,
+  .component-preview .kpi-card,
+  .component-preview .education-card,
+  .component-preview .skill-card,
+  .component-preview .advantage,
+  .component-preview .overview-card,
+  .component-preview .problem,
+  .component-preview .result,
+  .component-preview .reflection-card {
+    border-radius: var(--ds-radius-lg);
+  }
+
+  .component-preview .project:hover,
+  .component-preview .case:hover,
+  .component-preview .design-card:hover,
+  .component-preview .highlight:hover,
+  .component-preview .detail-card:hover,
+  .component-preview .kpi-card:hover,
+  .component-preview .overview-card:hover {
+    transform: none;
+  }
+}
