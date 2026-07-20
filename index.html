@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="朱星宇｜UX 设计师 / 产品经理个人简历" />
+  <meta name="description" content="朱星宇｜专注复杂业务系统与 AI 产品体验的 UX 交互设计师作品集" />
   <link rel="icon" href="data:," />
-  <title>朱星宇｜UX 设计师 / 产品经理</title>
+  <title>朱星宇｜UX 交互设计师作品集</title>
   <script>document.documentElement.classList.add("js")</script>
   <style>
     :root {
@@ -327,22 +327,27 @@
 
     .chip svg { width: 13px; height: 13px; color: #8fe2e4; }
 
-    .avatar {
+    .avatar-wrap {
       position: relative;
       z-index: 1;
       align-self: center;
       display: grid;
+      justify-items: center;
+      gap: 13px;
+      min-width: 148px;
+      margin-right: 2px;
+    }
+
+    .avatar {
+      position: relative;
+      display: grid;
       place-items: center;
-      width: 126px;
-      height: 126px;
-      margin-right: 8px;
-      border: 5px solid rgba(255,255,255,.10);
-      border-radius: 28px;
-      color: var(--navy);
+      width: 132px;
+      height: 132px;
+      border: 5px solid rgba(255,255,255,.14);
+      border-radius: 30px;
       background: linear-gradient(145deg, #fff, #dfe8ff);
-      box-shadow: 0 18px 30px rgba(0,0,0,.18);
-      font-size: 50px;
-      font-weight: 850;
+      box-shadow: 0 18px 32px rgba(0,0,0,.22);
     }
 
     .avatar::before,
@@ -352,7 +357,7 @@
       inset: -17px;
       z-index: -1;
       border: 1px solid rgba(142, 226, 228, .22);
-      border-radius: 36px;
+      border-radius: 38px;
       transform: rotate(9deg);
       transition: transform .55s cubic-bezier(.2,.8,.2,1);
     }
@@ -367,24 +372,39 @@
     .hero:hover .avatar::after { transform: rotate(4deg); }
 
     .avatar img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      border-radius: 22px;
+      object-position: 50% 42%;
+      border-radius: 24px;
     }
 
-    .avatar small {
-      position: absolute;
-      right: -9px;
-      bottom: -8px;
-      padding: 5px 8px;
-      color: #073d3f;
-      background: #83e2e5;
-      border: 3px solid var(--navy);
+    .avatar-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 25px;
+      padding: 5px 10px;
+      color: #bff9fb;
+      background: rgba(47,197,201,.10);
+      border: 1px solid rgba(131,226,229,.32);
       border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
       font-size: 9px;
+      font-weight: 800;
+      line-height: 1;
       letter-spacing: .08em;
+      white-space: nowrap;
+    }
+
+    .avatar-status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #50d9dd;
+      box-shadow: 0 0 0 4px rgba(80,217,221,.12);
     }
 
 
@@ -670,6 +690,7 @@
     .projects { display: grid; gap: 15px; }
 
     .project {
+      position: relative;
       display: grid;
       grid-template-columns: 72px 1fr;
       gap: 20px;
@@ -734,6 +755,54 @@
       font-size: 10px;
       line-height: 1.55;
     }
+
+    .project__background strong { color: var(--ink); font-weight: 800; }
+
+    .project--featured { border-color: rgba(66,99,235,.18); }
+    .project--featured::before {
+      content: "";
+      position: absolute;
+      inset: 12px auto 12px 0;
+      width: 3px;
+      background: linear-gradient(var(--blue), var(--cyan));
+      border-radius: 0 4px 4px 0;
+    }
+
+    .case-badge {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 6px;
+      padding: 3px 7px;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 999px;
+      font-size: 7px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      vertical-align: 2px;
+    }
+
+    .case-badge--soft { color: #3152c7; background: var(--soft-blue); }
+    .case-badge--cyan { color: #117b80; background: var(--soft-cyan); }
+
+    .ux-focus-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin: -8px 0 18px;
+    }
+
+    .ux-focus-strip article {
+      min-width: 0;
+      padding: 13px 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+    }
+
+    .ux-focus-strip span { display: block; color: var(--blue); font-size: 7px; font-weight: 850; letter-spacing: .1em; }
+    .ux-focus-strip strong { display: block; margin-top: 4px; color: var(--ink); font-size: 10px; }
+    .ux-focus-strip p { margin: 3px 0 0; color: var(--muted); font-size: 8px; line-height: 1.5; }
 
     .project__details {
       display: grid;
@@ -904,7 +973,7 @@
       .resume { width: 100%; margin: 0; gap: 0; }
       .page { min-height: 0; padding: 24px 18px 48px; border: 0; border-radius: 0; box-shadow: none; }
       .hero { grid-template-columns: 1fr; padding: 28px 24px; }
-      .avatar { display: none; }
+      .avatar-wrap { display: none; }
       h1 { font-size: 39px; }
       .content-grid { grid-template-columns: 1fr; gap: 28px; }
       .sidebar { padding: 0; border: 0; }
@@ -925,41 +994,50 @@
     /* Mobile layout normalization */
     @media (max-width: 760px) {
       html, body { max-width: 100%; overflow-x: hidden; }
-      .toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; width: 100%; min-height: 58px; gap: 10px; padding: 8px 14px; }
+      .toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; width: 100%; min-height: 58px; gap: 10px; padding: 8px max(10px, env(safe-area-inset-right)) 8px max(10px, env(safe-area-inset-left)); }
       .toolbar__brand { min-width: 0; }
       .toolbar__brand strong { white-space: nowrap; }
       .toolbar__actions { margin-left: 0; }
       .button { width: 46px; min-height: 38px; padding: 0; font-size: 0; white-space: nowrap; }
       .button::after { content: "导出"; font-size: 10px; }
-      .page { width: 100%; padding: 22px 16px 42px; }
-      .hero { gap: 0; padding: 27px 20px; border-radius: 20px; }
-      .avatar { display: grid; order: -1; width: 88px; height: 88px; margin: 0 auto 22px; border-width: 3px; border-radius: 21px; }
-      .avatar img { border-radius: 17px; }
-      .avatar small { right: -8px; bottom: -7px; padding: 4px 6px; border-width: 2px; font-size: 7px; }
+      .page { width: 100%; padding: 18px 10px 42px; }
+      .hero { gap: 0; padding: 27px 18px; border-radius: 20px; }
+      .avatar-wrap { display: grid; order: -1; gap: 10px; min-width: 0; margin: 0 auto 22px; }
+      .avatar { width: 104px; height: 104px; border-width: 3px; border-radius: 24px; }
+      .avatar img { border-radius: 20px; }
+      .avatar-status { min-height: 24px; padding: 5px 10px; font-size: 8.5px; }
       .eyebrow { font-size: 9px; letter-spacing: .1em; }
       h1 { font-size: clamp(36px, 12vw, 44px); }
       .role { font-size: 16px; }
       .value-proposition { font-size: 14px; }
-      .summary { font-size: 11.5px; }
+      .summary { font-size: 12px; line-height: 1.72; }
+      .hero-tag { font-size: 10px; }
       .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-      .chip { min-width: 0; justify-content: center; padding: 8px 7px; font-size: 9.5px; white-space: nowrap; }
+      .chip { min-width: 0; justify-content: center; padding: 8px 7px; font-size: 10.5px; white-space: nowrap; }
       .chip:first-child { grid-column: 1 / -1; }
       .content-grid { gap: 24px; }
       .page-header { align-items: flex-start; flex-direction: column; gap: 10px; margin-bottom: 18px; padding: 18px; border-radius: 15px; }
       .page-header h2 { font-size: 21px; }
       .page-header__mark { font-size: 8px; }
-      .project-filters { margin-top: -3px; margin-right: -16px; padding-right: 16px; }
+      .ux-focus-strip { grid-template-columns: 1fr; gap: 7px; margin: -3px 0 14px; }
+      .ux-focus-strip article { padding: 13px; }
+      .ux-focus-strip span { font-size: 9px; }
+      .ux-focus-strip strong { font-size: 12px; }
+      .ux-focus-strip p { font-size: 10.5px; line-height: 1.65; }
+      .tag { font-size: 10px; }
+      .project-filters { margin-top: -3px; margin-right: -10px; padding-right: 10px; }
       .projects { gap: 12px; }
       .project { gap: 13px; padding: 17px; border-radius: 16px; }
       .project__index { gap: 10px; }
       .project__number { flex: 0 0 auto; }
-      .project__type { font-size: 7.5px; }
+      .project__type { font-size: 8.5px; }
       .project__head { margin-bottom: 8px; }
-      .project__head h3 { font-size: 15px; line-height: 1.4; }
-      .project__meta { font-size: 8.5px; }
-      .project__background { padding: 9px 10px; font-size: 9.5px; }
+      .project__head h3 { font-size: 15px; line-height: 1.55; }
+      .case-badge { margin-left: 4px; white-space: nowrap; vertical-align: 1px; font-size: 8.5px; }
+      .project__meta { font-size: 10px; }
+      .project__background { padding: 10px 11px; font-size: 10.5px; line-height: 1.65; }
       .project__details { gap: 13px; }
-      .project__details h4 { font-size: 9.5px; }
+      .project__details h4 { font-size: 10.5px; }
       .project-case-link { width: 100%; min-height: 40px; justify-content: center; font-size: 10px; }
       .page-footer { right: auto; left: auto; gap: 12px; font-size: 8px; }
     }
@@ -983,7 +1061,7 @@
     @media print {
       :root { --paper: #fffdf9; }
       body { margin: 0; background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .toolbar, .project-filters, .project-case-link, .project--portfolio-only { display: none !important; }
+      .toolbar, .project-filters, .project-case-link, .project--portfolio-only, .ux-focus-strip { display: none !important; }
       .js .reveal { opacity: 1 !important; transform: none !important; }
       .project { display: grid !important; transform: none !important; box-shadow: none !important; }
       .resume { display: block; width: auto; margin: 0; }
@@ -1005,7 +1083,9 @@
       .summary { font-size: 9.2px; line-height: 1.5; }
       .contacts { margin-top: 12px; gap: 6px; }
       .chip { padding: 5px 8px; font-size: 8.5px; }
-      .avatar { width: 30mm; height: 30mm; border-radius: 6mm; font-size: 38px; }
+      .avatar-wrap { gap: 2mm; min-width: 33mm; margin-right: 0; }
+      .avatar { width: 30mm; height: 30mm; border-radius: 6mm; }
+      .avatar-status { min-height: 5mm; padding: 1.2mm 2mm; font-size: 6.5px; }
       .content-grid { grid-template-columns: 30% 1fr; gap: 7mm; margin-top: 6mm; }
       .sidebar { padding-right: 6mm; }
       .section { margin-bottom: 6mm; }
@@ -1054,7 +1134,7 @@
 </head>
 <body>
   <header class="toolbar" aria-label="简历操作栏">
-    <div class="toolbar__brand"><i class="toolbar__dot"></i><strong>朱星宇</strong><span>UX Designer · Product Manager</span></div>
+    <div class="toolbar__brand"><i class="toolbar__dot"></i><strong>朱星宇</strong><span>UX Interaction Designer</span></div>
     <nav class="toolbar__nav" aria-label="页面导航">
       <a href="#profile" class="is-active">概览</a><a href="#experience">经历</a><a href="#projects">项目</a>
     </nav>
@@ -1065,12 +1145,12 @@
     <article class="page" id="profile" aria-label="简历第一页">
       <section class="hero reveal">
         <div class="hero__content">
-          <div class="eyebrow">B2B EXPERIENCE · AI PRODUCT · DESIGN SYSTEM</div>
+          <div class="eyebrow">COMPLEX B2B · AI EXPERIENCE · INTERACTION DESIGN</div>
           <h1>朱星宇</h1>
-          <p class="role">UX 设计师 / 产品经理</p>
-          <p class="value-proposition">把复杂业务，转化为<em>清晰、可用、可持续迭代</em>的产品体验。</p>
-          <p class="summary">拥有 B 端平台、消费品与 AI 产品实践经验，擅长复杂业务梳理、交互设计、设计系统建设及跨团队落地，可独立推进从需求分析到上线迭代的完整流程。</p>
-          <div class="hero-tags" aria-label="核心能力"><span class="hero-tag">复杂业务梳理</span><span class="hero-tag">设计系统</span><span class="hero-tag">AI 产品 0→1</span></div>
+          <p class="role">UX 交互设计师</p>
+          <p class="value-proposition">把复杂业务与系统规则，转化为<em>清晰、可靠、可持续迭代</em>的产品体验。</p>
+          <p class="summary">专注复杂 B 端系统与 AI 产品体验，擅长从业务目标、用户任务和系统约束出发，梳理信息架构、关键流程、状态规则与异常边界，并推动方案从需求分析、交互设计到开发上线形成完整闭环。</p>
+          <div class="hero-tags" aria-label="核心能力"><span class="hero-tag">复杂业务建模</span><span class="hero-tag">信息架构</span><span class="hero-tag">交互与状态设计</span><span class="hero-tag">AI 产品体验</span></div>
           <div class="contacts">
             <a class="chip" href="mailto:476181740@qq.com" aria-label="发送邮件">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg>476181740@qq.com
@@ -1081,7 +1161,10 @@
             <span class="chip">期望 7–10K</span>
           </div>
         </div>
-        <div class="avatar" aria-label="朱星宇个人头像"><img src="assets/images/profile/zxy-avatar.jpg" alt="朱星宇个人头像"><small>OPEN TO WORK</small></div>
+        <div class="avatar-wrap">
+          <div class="avatar"><img src="assets/images/profile/zxy-avatar.jpg" alt="朱星宇个人头像"></div>
+          <span class="avatar-status" aria-label="求职状态：正在寻找新的工作机会">求职中 · OPEN TO WORK</span>
+        </div>
       </section>
 
       <div class="content-grid reveal" id="experience">
@@ -1140,12 +1223,12 @@
                   <time class="job__date">2025.05 — 至今</time>
                 </div>
                 <ul class="bullet-list">
-                  <li>负责平台、消费品及智能 AI 三条核心业务线的产品设计与交互优化，独立推进需求分析、方案设计到开发落地。</li>
-                  <li>主导 Web / 移动端组件库与 Axure 原型组件库建设，统一设计规范和可复用资产，推动跨产品线体验一致性。</li>
-                  <li>承担基础功能迭代、信息架构优化和设计走查，保障产品体验稳定性与易用性。</li>
-                  <li>主导智能抄单助手、智能体库、AI 销售培训等核心功能从 0 到 1 落地，探索 AI 场景交互范式。</li>
-                  <li>组织推进个人设置和系统信息优化，针对历史视觉、交互、权限与业务边界问题进行系统性重构。</li>
-                  <li>协同产品、研发和业务方完成需求评审与排期，输出 PRD / 交互说明并跟进高质量实现。</li>
+                  <li>负责平台、消费品与智能 AI 三条业务线的 UX 设计，从业务目标和用户任务出发完成需求拆解、流程梳理、交互方案与视觉交付。</li>
+                  <li>针对复杂功能建立对象关系、页面结构、状态流转与异常分支，避免设计只停留在单一页面层面。</li>
+                  <li>主导 Web / 移动端 Figma 组件库与 Axure 原型组件库建设，统一设计语言、交互规则与跨角色协作方式。</li>
+                  <li>主导智能抄单助手、智能体库、AI 销售培训等功能从 0 到 1 落地，重点处理 AI 结果的不确定性、反馈与纠错体验。</li>
+                  <li>组织推进个人设置和系统信息优化，通过历史页面审查梳理信息架构、操作层级、权限与业务边界问题。</li>
+                  <li>协同产品、研发和业务方完成方案评审、交互说明、设计走查与上线验证，持续根据真实反馈迭代。</li>
                 </ul>
               </article>
 
@@ -1166,23 +1249,29 @@
           <section class="section">
             <h2 class="section-title cyan">核心优势</h2>
             <div class="advantage-grid">
-              <div class="advantage"><strong>平台级系统思维</strong><p>从信息架构、业务流程、组件复用等维度推动设计决策，不止于单页面视觉。</p></div>
-              <div class="advantage"><strong>完整交付闭环</strong><p>覆盖调研、流程、原型、视觉、交付、走查、数据反馈和持续迭代。</p></div>
-              <div class="advantage"><strong>AI 产品实践</strong><p>具备智能抄单、智能体管理、AI 培训等业务的 0→1 设计经验。</p></div>
-              <div class="advantage"><strong>AI 驱动工作流</strong><p>将 Figma + Codex 等工具融入设计开发链路，缩短方案到代码的周期。</p></div>
+              <div class="advantage"><strong>复杂系统建模</strong><p>从业务对象、任务流程、信息架构和权限关系中建立稳定的产品结构。</p></div>
+              <div class="advantage"><strong>交互与状态设计</strong><p>覆盖正常路径、异常分支、加载反馈、空状态与操作恢复，保证体验完整可靠。</p></div>
+              <div class="advantage"><strong>方案判断与取舍</strong><p>基于用户任务、业务约束和实现成本解释设计决策，而不是只呈现最终界面。</p></div>
+              <div class="advantage"><strong>落地与持续验证</strong><p>协同产品、研发和业务推进评审、交付、走查、上线验证及后续迭代。</p></div>
             </div>
           </section>
         </div>
       </div>
 
-      <footer class="page-footer"><span>朱星宇 · UX Designer / Product Manager</span><span>01 / 02</span></footer>
+      <footer class="page-footer"><span>朱星宇 · UX Interaction Designer</span><span>01 / 02</span></footer>
     </article>
 
     <article class="page" id="projects" aria-label="简历第二页">
       <header class="page-header reveal">
-        <div><h2>项目经历</h2><p>从复杂业务模块、组件体系到 AI 产品 0→1 落地</p></div>
-        <div class="page-header__mark">SELECTED PROJECTS · 2025—2026</div>
+        <div><h2>精选 UX 案例</h2><p>从问题证据、系统建模到交互决策与上线验证</p></div>
+        <div class="page-header__mark">SELECTED UX CASES · 2025—2026</div>
       </header>
+
+      <section class="ux-focus-strip reveal project--portfolio-only" aria-label="UX 设计能力方向">
+        <article><span>01 · SYSTEM</span><strong>复杂业务系统</strong><p>梳理对象、流程、状态与权限，建立可扩展的业务结构。</p></article>
+        <article><span>02 · AI UX</span><strong>AI 交互体验</strong><p>让识别、生成与推荐过程可感知，结果可核对、错误可恢复。</p></article>
+        <article><span>03 · DECISION</span><strong>信息与决策路径</strong><p>重构内容优先级和分析路径，帮助用户更快完成关键判断。</p></article>
+      </section>
 
       <div class="project-filters reveal" role="group" aria-label="项目筛选">
         <button class="filter-button is-active" type="button" data-filter="all">全部项目</button>
@@ -1193,19 +1282,19 @@
       </div>
 
       <section class="projects reveal">
-        <article class="project project--current" data-category="ux">
+        <article class="project project--current project--featured" data-category="ux">
           <div class="project__index"><div class="project__number">01</div><div class="project__type">UX Refactor</div></div>
           <div>
-            <div class="project__head"><h3>个人设置和系统信息优化 <span class="project-status">优化进行中</span></h3><span class="project__meta">项目负责人 · 2026.07 — 至今</span></div>
-            <p class="project__background">随着产品持续迭代，个人设置与系统信息页面逐渐出现视觉规范不统一、设置路径冗长、操作层级不清和权限边界校验不足等体验问题。项目以统一设计语言、简化操作流程和补齐业务规则为目标，正在分阶段推进系统性优化。</p>
+            <div class="project__head"><h3>个人设置和系统信息优化 <span class="case-badge">核心案例</span> <span class="project-status">优化进行中</span></h3><span class="project__meta">项目负责人 · 2026.07 — 至今</span></div>
+            <p class="project__background"><strong>设计命题：</strong>如何在历史功能持续叠加的系统中，重新建立清晰的信息架构、查看与编辑关系，以及完整的权限和异常边界。</p>
             <div class="project-focus" aria-label="项目优化重点">
-              <span class="project-focus__item">视觉统一</span>
-              <span class="project-focus__item">路径简化</span>
-              <span class="project-focus__item">规则补齐</span>
+              <span class="project-focus__item">架构重组</span>
+              <span class="project-focus__item">状态一致</span>
+              <span class="project-focus__item">权限边界</span>
             </div>
             <div class="project__details project__details--current">
-              <div><h4>优化行动</h4><ul class="bullet-list"><li>梳理个人设置和系统信息现状，以页面、组件和业务规则为维度建立问题清单与优化优先级。</li><li>统一组件、图标、品牌色与信息布局，优化长页面、长列表和操作按钮层级。</li><li>协同产品与研发补齐权限可见性、日期校验和异常状态反馈等业务边界。</li></ul></div>
-              <div class="project__result"><h4>当前进展</h4><ul class="bullet-list"><li>已完成核心问题梳理与优化方向对齐。</li><li>正在分模块推进方案设计、评审与研发协同。</li><li>后续将结合上线反馈持续验证和迭代。</li></ul></div>
+              <div><h4>问题依据与设计判断</h4><ul class="bullet-list"><li>通过历史页面审查，将零散问题归纳为功能边界、操作层级、组件一致性与规则缺失四类。</li><li>将个人信息从超长混合表单拆为查看态与编辑态，并按账户、安全、提醒和系统能力重新分组。</li><li>协同产品与研发补齐权限可见性、日期校验和异常状态反馈。</li></ul></div>
+              <div class="project__result"><h4>验证与迭代状态</h4><ul class="bullet-list"><li>已完成核心问题梳理和方案方向评审。</li><li>正在分模块推进高保真设计与开发协同。</li><li>后续结合上线走查和真实使用反馈持续调整。</li></ul></div>
             </div>
             <a class="project-case-link" href="profile-settings.html" aria-label="查看个人信息与系统设置优化完整项目案例">查看完整案例 <span aria-hidden="true">→</span></a>
           </div>
@@ -1214,11 +1303,11 @@
         <article class="project" data-category="business">
           <div class="project__index"><div class="project__number">02</div><div class="project__type">Warehouse System</div></div>
           <div>
-            <div class="project__head"><h3>易仓配</h3><span class="project__meta">核心设计 · 2025.11 — 2025.12</span></div>
-            <p class="project__background">为补齐软件的仓储履约能力，从 0 到 1 新增仓储业务模块，覆盖入库、出库、库存、盘点、调拨与移库等核心作业，推动仓库日常操作线上化与流程协同。</p>
+            <div class="project__head"><h3>易仓配 <span class="case-badge case-badge--soft">重点业务项目</span></h3><span class="project__meta">核心设计 · 2025.11 — 2025.12</span></div>
+            <p class="project__background"><strong>设计命题：</strong>如何从零建立一套覆盖入库、出库、库存、盘点、调拨与移库的仓储操作体系，并让单据状态和库存变化始终可理解。</p>
             <div class="project__details">
-              <div><h4>关键行动</h4><ul class="bullet-list"><li>负责仓储模块主要页面的信息架构、任务流程、交互与 UI 设计，梳理单据、作业状态和库存流转关系。</li><li>设计入库、出库、库存查询、盘点、调拨、移库等关键操作，覆盖创建、执行、确认、异常处理和结果反馈。</li><li>协同产品与研发明确页面规则和业务边界，持续参与方案评审、设计走查及上线后的体验迭代。</li></ul></div>
-              <div class="project__result"><h4>项目成果</h4><ul class="bullet-list"><li>仓储模块于 <strong>2025 年 12 月</strong>正式上线并稳定运行。</li><li>补齐产品的仓储业务能力，实现核心作业流程的线上化管理。</li><li>当前结合实际业务反馈持续优化操作路径与功能细节。</li></ul></div>
+              <div><h4>系统建模与关键流程</h4><ul class="bullet-list"><li>梳理仓库、库存、单据和作业之间的对象关系，统一不同任务的页面结构与操作模型。</li><li>重点设计入库、出库和盘点三条任务流，并覆盖创建、执行、确认、异常处理与结果反馈。</li><li>协同产品与研发明确状态规则和业务边界，持续参与方案评审与设计走查。</li></ul></div>
+              <div class="project__result"><h4>上线与持续验证</h4><ul class="bullet-list"><li>仓储模块于 <strong>2025 年 12 月</strong>正式上线并稳定运行。</li><li>补齐产品的仓储业务能力，实现核心作业流程的线上化管理。</li><li>当前结合实际业务反馈持续优化操作路径与功能细节。</li></ul></div>
             </div>
           </div>
         </article>
@@ -1227,35 +1316,35 @@
           <div class="project__index"><div class="project__number">03</div><div class="project__type">Design System</div></div>
           <div>
             <div class="project__head"><h3>Figma 组件库迁移与搭建</h3><span class="project__meta">项目负责人 · 2025.06 — 至今</span></div>
-            <p class="project__background">团队从旧设计工具迁移至 Figma，原有资产无法复用，需要从零建立适配新平台的双端组件体系与设计规范。</p>
+            <p class="project__background"><strong>设计命题：</strong>如何在工具迁移中重建可复用、可维护的双端设计资产，并让组件规则真正进入产品、设计与研发的协作流程。</p>
             <div class="project__details">
-              <div><h4>关键行动</h4><ul class="bullet-list"><li>带领 2 名实习生，从颜色、字体、间距规则等基础层完成 Web 与移动端组件搭建。</li><li>制定命名规范、使用文档与维护流程，并同步搭建 Axure 原型组件库。</li><li>面向产品团队宣讲推广，让标准化组件前置到原型阶段。</li></ul></div>
-              <div class="project__result"><h4>项目成果</h4><ul class="bullet-list"><li>组件库稳定运行并持续维护，覆盖率达 <strong>92%</strong>。</li><li>团队设计效率提升约 <strong>30%</strong>，跨产品线不规范问题显著减少。</li><li>缩短设计、产品与研发之间的协作链路。</li></ul></div>
+              <div><h4>设计系统方法</h4><ul class="bullet-list"><li>从颜色、字体、间距等基础变量出发，逐层搭建 Web 与移动端组件。</li><li>制定命名、变体、使用说明和维护流程，并同步搭建 Axure 原型组件库。</li><li>通过团队宣讲和实际项目接入，让标准化规则前置到原型阶段。</li></ul></div>
+              <div class="project__result"><h4>应用与验证</h4><ul class="bullet-list"><li>组件库稳定运行并持续维护，覆盖率达 <strong>92%</strong>。</li><li>团队设计效率提升约 <strong>30%</strong>，跨产品线不规范问题显著减少。</li><li>缩短设计、产品与研发之间的协作链路。</li></ul></div>
             </div>
           </div>
         </article>
 
-        <article class="project" data-category="ai">
+        <article class="project project--featured" data-category="ai">
           <div class="project__index"><div class="project__number">04</div><div class="project__type">AI Assistant</div></div>
           <div>
-            <div class="project__head"><h3>智能抄单助手</h3><span class="project__meta">项目负责人 · 2025.07 — 2025.08</span></div>
-            <p class="project__background">针对 MERP 订单下单与销售场景中原流程效率低、易出错的问题，通过智能化交互提升抄单体验和业务准确率。</p>
+            <div class="project__head"><h3>智能抄单助手 <span class="case-badge">核心案例</span></h3><span class="project__meta">项目负责人 · 2025.07 — 2025.08</span></div>
+            <p class="project__background"><strong>设计命题：</strong>如何把自然语言中的多商品订货需求转化为可核对、可修正的结构化订单，同时平衡 AI 效率与业务准确性。</p>
             <div class="project__details">
-              <div><h4>关键行动</h4><ul class="bullet-list"><li>独立推进需求拆解、交互设计、UI 产出及上线后迭代。</li><li>梳理复杂任务流与状态流转，覆盖正常路径、异常分支和兜底策略。</li><li>设计二次确认、智能纠错提示等容错反馈机制。</li></ul></div>
-              <div class="project__result"><h4>项目成果</h4><ul class="bullet-list"><li>上线后稳定运行，日均活跃企业 <strong>10+</strong>。</li><li>下单准确率达 <strong>80%+</strong>，操作失误显著减少。</li><li>形成“设计—使用—反馈—迭代”的体验闭环。</li></ul></div>
+              <div><h4>关键交互判断</h4><ul class="bullet-list"><li>围绕“输入—识别—匹配—核对—提交”建立完整任务流和状态反馈。</li><li>将 AI 结果设计为可选择、可修改的候选内容，而不是直接替用户完成决策。</li><li>为未识别、未命中和候选不足等情况提供明确的恢复路径。</li></ul></div>
+              <div class="project__result"><h4>上线验证</h4><ul class="bullet-list"><li>上线后稳定运行，日均活跃企业 <strong>10+</strong>。</li><li>下单准确率达 <strong>80%+</strong>，操作失误显著减少。</li><li>形成“设计—使用—反馈—迭代”的体验闭环。</li></ul></div>
             </div>
             <a class="project-case-link" href="voice-order.html" aria-label="查看智能抄单助手完整项目案例">查看完整案例 <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
-        <article class="project" data-category="ai">
+        <article class="project project--featured" data-category="ai">
           <div class="project__index"><div class="project__number">05</div><div class="project__type">AI Platform</div></div>
           <div>
-            <div class="project__head"><h3>智能体库搭建</h3><span class="project__meta">项目负责人 · 2026.02 — 2026.04</span></div>
-            <p class="project__background">构建类 Coze 的企业智能体管理平台，支持客户自主创建、配置与管理 AI 智能体，满足多业务场景的灵活扩展。</p>
+            <div class="project__head"><h3>智能体库搭建 <span class="case-badge">核心案例</span></h3><span class="project__meta">项目负责人 · 2026.02 — 2026.04</span></div>
+            <p class="project__background"><strong>设计命题：</strong>如何把模型、知识库、工具和业务规则转化为企业用户可理解、可配置、可维护的智能体工作台。</p>
             <div class="project__details">
-              <div><h4>关键行动</h4><ul class="bullet-list"><li>主导创建、编辑、删除、列表管理等完整生命周期设计。</li><li>设计 Prompt 编排、知识库挂载、工具调用和变量管理等专业配置页面。</li><li>持续优化后台信息架构与操作路径，降低非技术用户使用门槛。</li></ul></div>
-              <div class="project__result"><h4>项目成果</h4><ul class="bullet-list"><li>从 0 到 1 完成产品化并于 2026 年 4 月上线。</li><li>用户可零代码完成智能体搭建与发布。</li><li>补齐 AI 中台的智能体管理能力，支撑多场景快速部署。</li></ul></div>
+              <div><h4>平台结构与配置体验</h4><ul class="bullet-list"><li>梳理智能体从创建、配置、调试到发布和管理的完整生命周期。</li><li>用分组、步骤和渐进式披露组织 Prompt、知识库、工具与变量等专业能力。</li><li>通过配置与预览并置，让用户在保持任务上下文的同时验证结果。</li></ul></div>
+              <div class="project__result"><h4>上线验证</h4><ul class="bullet-list"><li>从 0 到 1 完成产品化并于 2026 年 4 月上线。</li><li>用户可零代码完成智能体搭建与发布。</li><li>补齐 AI 中台的智能体管理能力，支撑多场景快速部署。</li></ul></div>
             </div>
             <a class="project-case-link" href="agent-platform.html" aria-label="查看智能体库搭建完整项目案例">查看完整案例 <span aria-hidden="true">→</span></a>
           </div>
@@ -1265,22 +1354,22 @@
           <div class="project__index"><div class="project__number">06</div><div class="project__type">AI Training</div></div>
           <div>
             <div class="project__head"><h3>AI 销售培训</h3><span class="project__meta">项目负责人 · 2026.07 — 至今</span></div>
-            <p class="project__background">通过 AI 与业务数据库生成模拟陪练场景，为销售人员提供针对具体客户的应对策略、话术练习与多维评分。</p>
+            <p class="project__background"><strong>设计命题：</strong>如何把客户信息、陪练对话和多维评分组织为可信的销售训练闭环，让配置端与练习端保持一致。</p>
             <div class="project__details">
-              <div><h4>关键行动</h4><ul class="bullet-list"><li>负责 Web 端场景、话术规则、评分维度等配置模块设计。</li><li>主导 App 端培训模块交互与 UI，保证陪练过程流畅、沉浸。</li><li>参与客户调研，将一线销售的真实痛点转化为产品功能。</li></ul></div>
-              <div class="project__result"><h4>项目成果</h4><ul class="bullet-list"><li>调研阶段多家企业表达明确使用意愿。</li><li>初步验证市场需求和产品方向。</li><li>成为 AI 产品线的新业务拓展方向，具备规模化复制潜力。</li></ul></div>
+              <div><h4>研究与方案方向</h4><ul class="bullet-list"><li>参与客户调研，将销售准备、话术练习与复盘中的真实任务转化为产品流程。</li><li>负责 Web 端场景、话术规则和评分维度配置，以及 App 端陪练交互。</li><li>重点处理对话进度、AI 反馈、评分解释和重新练习等状态。</li></ul></div>
+              <div class="project__result"><h4>当前验证状态</h4><ul class="bullet-list"><li>已形成配置端与练习端的核心体验框架。</li><li>正在结合客户需求继续验证场景覆盖和评分表达。</li><li>方案仍处于设计与业务验证阶段，后续持续迭代。</li></ul></div>
             </div>
           </div>
         </article>
 
-        <article class="project project--portfolio-only" data-category="business">
+        <article class="project project--portfolio-only project--featured" data-category="business">
           <div class="project__index"><div class="project__number">07</div><div class="project__type">Data Dashboard</div></div>
           <div>
-            <div class="project__head"><h3>经营概览优化设计</h3><span class="project__meta">核心设计 · 数据看板优化</span></div>
-            <p class="project__background">围绕管理者“看现状、找变化、做比较、查明细”的经营分析路径，重新组织关键指标、趋势图表、专项分析与排行数据，提升复杂数据的可读性和分析效率。</p>
+            <div class="project__head"><h3>经营概览优化设计 <span class="case-badge case-badge--cyan">交互案例</span></h3><span class="project__meta">核心设计 · 数据看板优化</span></div>
+            <p class="project__background"><strong>设计命题：</strong>如何把分散的经营指标、趋势与排行组织成连续的决策路径，帮助管理者从发现变化自然进入比较和定位。</p>
             <div class="project__details">
-              <div><h4>关键行动</h4><ul class="bullet-list"><li>重构经营看板的信息层级，建立从总览指标到专项分析的阅读顺序。</li><li>统一时间周期、分析对象、指标和员工等筛选控件及状态反馈。</li><li>覆盖指标联动、图表切换、排行比较、对象排除及移动端重排规则。</li></ul></div>
-              <div class="project__result"><h4>方案输出</h4><ul class="bullet-list"><li>完成经营概览核心页面与关键交互状态的高保真设计。</li><li>形成图表、排行、筛选和响应式布局的统一设计规则。</li><li>案例页已还原可操作原型，便于展示完整的设计逻辑。</li></ul></div>
+              <div><h4>分析路径与交互规则</h4><ul class="bullet-list"><li>围绕“看现状—找变化—做比较—查明细”重构经营看板的信息层级。</li><li>统一时间、对象、指标和员工等筛选控件及联动反馈。</li><li>将宽屏双栏看板在移动端按决策优先级重新编排，而不是整体缩小。</li></ul></div>
+              <div class="project__result"><h4>原型与后续验证</h4><ul class="bullet-list"><li>完成经营概览核心页面与关键交互状态的高保真设计。</li><li>形成图表、排行、筛选和响应式布局的统一设计规则。</li><li>案例页已还原可操作原型，便于展示完整的设计逻辑。</li></ul></div>
             </div>
             <a class="project-case-link" href="business-overview.html" aria-label="查看经营概览优化设计完整项目案例">查看完整案例 <span aria-hidden="true">→</span></a>
           </div>
